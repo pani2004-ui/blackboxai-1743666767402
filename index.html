@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmConnect - Direct Market Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-green-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">FarmConnect</h1>
+            <div class="space-x-4">
+                <a href="list-product.html" class="hover:underline">List Product</a>
+                <span id="auth-link">
+                    ${localStorage.getItem('loggedIn') === 'true' ? 
+                    `<a href="#" onclick="logout()" class="hover:underline">Logout</a>` : 
+                    `<a href="auth.html" class="hover:underline">Login</a>`}
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-green-500 text-white py-16">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4">Connecting Farmers Directly to Buyers</h2>
+            <p class="text-xl mb-8">Eliminate middlemen and get fair prices for your produce</p>
+            <a href="list-product.html" class="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">List Your Products</a>
+        </div>
+    </section>
+
+    <!-- Product Listing -->
+    <section class="container mx-auto py-12 px-4">
+        <div class="flex justify-between items-center mb-8">
+            <h3 class="text-2xl font-semibold">Available Produce</h3>
+            <div class="relative">
+                <input type="text" placeholder="Search products..." class="border rounded-full py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-green-500">
+                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="product-list">
+            <!-- Product cards will be dynamically inserted here -->
+        </div>
+    </section>
+
+    <script src="scripts.js?v=${Date.now()}"></script>
+</body>
+</html>
